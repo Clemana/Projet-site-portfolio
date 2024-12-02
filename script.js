@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         description: "Mon quotidien",
         images: [
           { src: "Illustrations/Design.jpg" },
-          { src: "Illustrations/Pollypocket.png" },
+          { src: "Illustrations/Test2.png" },
           
         ]
       },

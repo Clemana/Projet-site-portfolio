@@ -476,7 +476,8 @@ header h1 {
   }
 
   #lightbox {
-    left: 44px;
+    left: 0px;
+    width: 100%;
   }
 }
 
