@@ -473,11 +473,13 @@ header h1 {
     
     width: 80%; /* Largeur par défaut pour les grands écrans */
     height: 15%; /* Hauteur par défaut */
+    top: 7%;
   }
 
   #lightbox {
     left: 0px;
     width: 100%;
+    flex-direction: column-reverse;
   }
 }
 
@@ -529,5 +531,15 @@ header h1 {
     left: 40px;
     font-size: 1rem; 
     max-width: 100px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .arrow {
+    display: none; /* Masque les flèches sur mobile/tablette */
+  }
+
+  #lightbox {
+    touch-action: pinch-zoom; /* Permet le défilement tactile */
   }
 }

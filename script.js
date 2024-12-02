@@ -202,6 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateLightboxContent();
       }
     }
+    
   
     // Ajouter des événements sur les images de la galerie
     galleryImages.forEach((img) => {
@@ -227,7 +228,6 @@ openButton.addEventListener("click", () => {
     openButton.textContent = "Bavardages"; // Réinitialiser le texte du bouton
   }
 });
-
 
 
   });
