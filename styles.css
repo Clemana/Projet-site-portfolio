@@ -543,3 +543,32 @@ header h1 {
     touch-action: pinch-zoom; /* Permet le défilement tactile */
   }
 }
+
+
+@media (max-width: 768px) {
+  .note {
+    position: relative; 
+    left: 0;
+    margin-top: 10px; 
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+    gap: 10px; 
+    font-size: 1.2rem; 
+    max-width: none; 
+    text-align: center; 
+    width: 100%; 
+    margin-bottom: 30px;
+  }
+
+  .note span {
+    font-weight: bold; 
+  }
+}
+
+@media (max-width: 480px) {
+  .note {
+    font-size: 1rem; /* Taille ajustée pour mobile */
+  }
+}
