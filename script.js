@@ -235,15 +235,18 @@ openButton.addEventListener("click", () => {
   document.addEventListener("DOMContentLoaded", () => {
     let touchStartX = 0;
     let touchEndX = 0;
-  
+    const swipeThreshold = 50; // Distance minimale pour détecter un swipe
+    
     function handleSwipe() {
-      if (touchEndX < touchStartX) {
-        // Swipe gauche
-        showNextImage();
-      }
-      if (touchEndX > touchStartX) {
-        // Swipe droite
-        showPrevImage();
+      const swipeDistance = touchEndX - touchStartX;
+      if (Math.abs(swipeDistance) > swipeThreshold) {
+        if (swipeDistance < 0) {
+          // Swipe gauche
+          showNextImage();
+        } else {
+          // Swipe droite
+          showPrevImage();
+        }
       }
     }
   
@@ -256,5 +259,9 @@ openButton.addEventListener("click", () => {
       touchEndX = e.changedTouches[0].screenX;
       handleSwipe();
     });
+  
+    lightboxImage.addEventListener("touchmove", (e) => {
+      e.preventDefault(); 
+    }, { passive: false });
   });
   
