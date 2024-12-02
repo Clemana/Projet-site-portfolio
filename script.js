@@ -229,39 +229,36 @@ openButton.addEventListener("click", () => {
   }
 });
 
+// Ajout des événements de swipe
+let touchStartX = 0;
+let touchEndX = 0;
+const swipeThreshold = 50;
+
+function handleSwipe() {
+  const swipeDistance = touchEndX - touchStartX;
+  if (Math.abs(swipeDistance) > swipeThreshold) {
+    if (swipeDistance < 0) {
+      showNextImage();
+    } else {
+      showPrevImage();
+    }
+  }
+}
+
+lightboxImage.addEventListener("touchstart", (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+lightboxImage.addEventListener("touchend", (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+});
+
+lightboxImage.addEventListener("touchmove", (e) => {
+  e.preventDefault();
+}, { passive: false });
+
 
   });
   
-  document.addEventListener("DOMContentLoaded", () => {
-    let touchStartX = 0;
-    let touchEndX = 0;
-    const swipeThreshold = 50; // Distance minimale pour détecter un swipe
-    
-    function handleSwipe() {
-      const swipeDistance = touchEndX - touchStartX;
-      if (Math.abs(swipeDistance) > swipeThreshold) {
-        if (swipeDistance < 0) {
-          // Swipe gauche
-          showNextImage();
-        } else {
-          // Swipe droite
-          showPrevImage();
-        }
-      }
-    }
-  
-    // Ajouter des événements pour les gestes de balayage
-    lightboxImage.addEventListener("touchstart", (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    });
-  
-    lightboxImage.addEventListener("touchend", (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    });
-  
-    lightboxImage.addEventListener("touchmove", (e) => {
-      e.preventDefault(); 
-    }, { passive: false });
-  });
   
