@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     "vacarme": {
       title: "Vacarme magazine",
-      description: "Illustration pour l'ensemble du magazine Vacarme mis en page par Solène Lautridou.",
+      description: "J’ai réalisé les illustrations pour la revue Littéraire Main Blanche à Montréal. Graphisme par Solène Lautridou.",
       images: [
         { src: "Illustrations/vacarme1.jpeg" },
         { src: "Illustrations/vacarme2.jpeg" },
@@ -84,16 +84,16 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       "Trans":  {
         title: "Trans",
-        description: "Des illustrations ou je me représente dans un quotidien qui est proche du rêve ou de l'imaginaire",
+        description: "",
         images: [
-          { src: "Illustrations/InjectionTesto.png" },
+          { src: "Illustrations/Design.jpg" },
           { src: "Illustrations/Pollypocket.png" },
           
         ]
       },
       "MamTamAffiche":  {
         title: "Mam Tam Affiche",
-        description: "Affiche pour un événement de métal à l'international.",
+        description: "Affiche réalisée à six mains avec Chloé Lozano et Océane Urvois pour le MamTam Shitfest, organisé par Fkliemfest Asso à l'International Paris. Nous avons imprimé ce visuel sur place grâce à un atelier de sérigraphie, sur divers supports tels que des t-shirts et du papier.",
         images: [
           { src: "Illustrations/MamTamAffiche.png" }
           
