@@ -534,15 +534,6 @@ header h1 {
   }
 }
 
-@media (max-width: 768px) {
-  .arrow {
-    display: none; /* Masque les flèches sur mobile/tablette */
-  }
-
-  #lightbox {
-    touch-action: pinch-zoom; /* Permet le défilement tactile */
-  }
-}
 
 
 @media (max-width: 768px) {
@@ -570,5 +561,11 @@ header h1 {
 @media (max-width: 480px) {
   .note {
     font-size: 1rem; /* Taille ajustée pour mobile */
+  }
+}
+
+@media (max-width: 768px) {
+  .arrow {
+    display: none !important;
   }
 }
