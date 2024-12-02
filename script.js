@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       "Trans":  {
         title: "Trans",
-        description: "",
+        description: "Mon quotidien",
         images: [
           { src: "Illustrations/Design.jpg" },
           { src: "Illustrations/Pollypocket.png" },
