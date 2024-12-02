@@ -186,29 +186,26 @@ header h1 {
 }
 
 .title{
-  text-decoration: underline; /* Active le soulignement */
-  text-decoration-color: red; /* Change la couleur */
-  text-underline-offset: 6px; /* Décale la ligne du texte */
+  text-decoration: underline; 
+  text-decoration-color: red;
+  text-underline-offset: 6px; 
 }
 
 /* Styles pour la lightbox */
 #lightbox {
   position: fixed;
-  top: 40px;
-  left: 245px;
-  width: 70%;
-  height: 88%;
-  background-color: #d8e9db;
-  background-image: 
-    linear-gradient(to bottom, transparent 59px, #8bbcec 1px), /* Lignes horizontales */
-    linear-gradient(to right, transparent 59px, #9fc3e7 1px); /* Lignes verticales */
-  background-size: 60px 60px; /* Taille intermédiaire de chaque carreau */
+  top: 15px;
+  left: 90px;
+  width: 80%;
+  height: 90%;
+ 
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   flex-direction: column;
 }
+
 
 #close-lightbox {
   position: absolute;
@@ -257,9 +254,11 @@ header h1 {
 .flip-card-front img {
   max-width: 100%; /* L'image ne dépasse pas la largeur du conteneur */
   max-height: 100%; /* L'image ne dépasse pas la hauteur du conteneur */
-  object-fit: contain; /* L'image garde ses proportions */
+  object-fit: contain; 
   border-radius: 5px;
 }
+
+
 
 .flip-card-back {
   background: #f4f4f4;
@@ -285,33 +284,18 @@ header h1 {
   text-align: center;
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  .modal-content {
-    width: 90%;
-    max-height: 90vh;
-  }
-
-  .description-container h2 {
-    font-size: 1.2rem;
-  }
-
-  .description-container p {
-    font-size: 0.9rem;
-  }
-}
-
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: #dea1e7;
   color: white;
   border: none;
   font-size: 2rem;
   padding: 10px;
   cursor: pointer;
   z-index: 10;
+  border-radius: 15px;
 }
 
 .arrow.left {
@@ -323,31 +307,43 @@ header h1 {
 }
 
 .arrow:hover {
-  background: rgba(0, 0, 0, 0.8);
+  background: #fefdfe;
+  color: #dea1e7;
 }
-
 
 #lightbox-header {
   position: relative;
-  width: 100%;
-  height: 40px; /* Hauteur de la barre contenant les boutons */
+  width: 30%; 
+  height: 15%; 
   display: flex;
-  justify-content: space-between; /* Aligne les boutons à gauche et à droite */
+  justify-content: space-between; 
   align-items: center;
-  padding: 0 10px;
+  padding: 8px;
 }
+
+
+#lightbox-image {
+  
+  width: 80%; 
+  height: 85%; 
+}
+
+
 
 #open-button {
   position: absolute;
   top: 10px;
   left: 10px; /* Coin supérieur gauche */
   cursor: pointer;
-  padding: 5px 10px;
-  background-color: #333;
+  padding: 10px 15px;
+  background-color: #dea1e7;
   color: #fff;
   border: none;
-  border-radius: 3px;
+  border-radius: 25px;
   font-size: 16px;
+  font-family: "Borel", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #close-lightbox {
@@ -356,42 +352,181 @@ header h1 {
   right: 10px; /* Coin supérieur droit */
   cursor: pointer;
   padding: 5px 10px;
-  background-color: #333;
+  background-color: #dea1e7;
   color: #fff;
   border: none;
   border-radius: 3px;
-  font-size: 16px;
+  font-size: 25px;
 }
 
 #open-button:hover,
 #close-lightbox:hover {
-  background-color: #555;
+  background-color: white;
+  color: #dea1e7;
 }
 
 /* Styles pour la modale */
 .modal {
-  display: none; /* Cachée par défaut */
+  display: none; 
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.95); 
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  z-index: 10; /* Assurez-vous que la modale est au-dessus de l'image */
+  z-index: 10; /* Toujours au-dessus */
+  width: 90%; /* Largeur fluide */
+  max-width: 500px; /* Largeur maximale */
+  height: auto; 
+  max-height: 80%; 
+  overflow-y: auto; 
 }
 
+/* Contenu de la modale */
 .modal-content {
   text-align: center;
+  padding: 10px;
 }
 
 .modal h2 {
   font-size: 1.5em;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  word-wrap: break-word; 
 }
 
 .modal p {
   font-size: 1em;
   color: #333;
+  line-height: 1.5;
+  margin: 0 auto; 
+  max-width: 90%; 
+  word-wrap: break-word; 
+}
+
+/* Ajustements pour les écrans plus petits */
+@media (max-width: 768px) {
+  .modal {
+    width: 95%; /* Plus large pour les tablettes */
+    max-width: 400px; /* Limite la largeur sur les écrans intermédiaires */
+  }
+
+  .modal h2 {
+    font-size: 1.2em;
+  }
+
+  .modal p {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 15px; 
+    max-height: 85%; 
+  }
+
+  .modal h2 {
+    font-size: 1em;
+  }
+
+  .modal p {
+    font-size: 0.85em;
+  }
+}
+
+/* Responsiveness pour tablette */
+@media (max-width: 768px) {
+  #open-button {
+    top: 5px; 
+    left: 5px;
+    padding: 8px 12px; 
+    font-size: 14px; 
+  }
+
+  #close-lightbox {
+    top: 5px; /* Ajuster la position sur tablette */
+    right: 5px;
+    padding: 5px 8px; 
+    font-size: 20px; 
+  }
+}
+
+/* Responsiveness pour mobile */
+@media (max-width: 480px) {
+  #open-button {
+    top: 3px; 
+    left: 3px;
+    padding: 6px 10px; 
+    font-size: 12px; 
+  }
+
+  #close-lightbox {
+    top: 3px; 
+    right: 3px;
+    padding: 4px 6px; 
+    font-size: 18px; 
+  }
+
+  #lightbox-header {
+    
+    width: 80%; /* Largeur par défaut pour les grands écrans */
+    height: 15%; /* Hauteur par défaut */
+  }
+
+  #lightbox {
+    left: 44px;
+  }
+}
+
+/* Responsiveness pour tablette */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.5rem; 
+  }
+
+  nav ul {
+    gap: 20px; 
+  }
+
+  nav ul li {
+    font-size: 16px; 
+  }
+}
+
+/* Responsiveness pour mobile */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 2rem; 
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px; 
+  }
+
+  nav ul li {
+    font-size: 14px; 
+  }
+}
+
+/* Responsiveness pour tablette */
+@media (max-width: 768px) {
+  .note {
+    top: 20px;
+    left: 80px; 
+    font-size: 1.2rem; 
+    max-width: 120px; 
+  }
+}
+
+/* Responsiveness pour mobile */
+@media (max-width: 480px) {
+  .note {
+    top: 15px; 
+    left: 40px;
+    font-size: 1rem; 
+    max-width: 100px; 
+  }
 }

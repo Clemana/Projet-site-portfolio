@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  
+
   const projectDetails = {
     "carte-magic": {
       title: "Cartes Magic : The Gathering", // Titre ajouté ici
@@ -30,59 +32,92 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     "vacarme": {
       title: "Vacarme magazine",
-      description: "bblalnabsz.",
+      description: "Illustration pour l'ensemble du magazine Vacarme mis en page par Solène Lautridou.",
       images: [
         { src: "Illustrations/vacarme1.jpeg" },
         { src: "Illustrations/vacarme2.jpeg" },
-        { src: "Illustrations/Vacarme3.jpeg" },
-        { src: "Illustrations/Vacarme4.jpeg" }
+        { src: "Illustrations/Vacarme5.jpeg" },
+        { src: "Illustrations/Vacarme4.jpeg" },
+        { src: "Illustrations/Vacarme6.jpeg" },
+        { src: "Illustrations/Vacarme11.jpeg" },
+        { src: "Illustrations/Vacarme12.jpeg" },
       ]
     },
     "Pepperovni":  {
         title: "Pepperovni",
-        description: "Coloriage pour le collectif Rien à Feutre en partenariat avec Kiblind magazine. Dessin réaliser en collaboration avec Julian Lagoutte et Ariane Corfmat",
+        description: "Coloriage réalisé pour le collectif Rien à Feutre, en partenariat avec le magazine Kiblind. Ce dessin, créé à six mains en collaboration avec Julian Lagoutte et Ariane Corfmat, s'appuie sur le principe du cadavre exquis : la première personne initie un dessin, la deuxième prolonge les lignes de celui-ci, et la troisième l'enrichit pour donner vie à une œuvre collective et spontanée.",
         images: [
           { src: "Illustrations/cadavre_exquis_OK.jpg" }
         ]
       },
       "skateandpizza":  {
         title: "Skate and pizza",
-        description: "Affiche conçue sous la direction artistique d'Océane Urvois pour La CIB de La Réunion, annonçant un événement inclusif  au skatepark de La Saline",
+        description: "Affiche conçue sous la direction artistique d'Océane Urvois pour La CIB de La Réunion, annonçant un événement inclusif au skatepark de La Saline.",
         images: [
           { src: "Illustrations/skateandpizza.jpg" }
         ]
       },
       "Cueille-la-nuit":  {
         title: "Cueille la nuit",
-        description: "Illustration créée pour des t-shirts en collaboration avec un collectif de sérigraphie “Cueille La Nuit”",
+        description: "Illustration créée pour des t-shirts en collaboration avec un collectif de sérigraphie “Cueille La Nuit”. J'ai fait plusieurs déclinaison de couleurs.",
         images: [
           { src: "Illustrations/Cueille-la-nuit.jpg" }
         ]
       },
       "monster":  {
         title: "monster",
-        description: "un monstre est de sortie en pleine journée",
+        description: "Projet de BD. L'idée de départ était de dessiner plusieurs planche et de laisser des bulles au personnage non remplies et proposer à différente personnes de ls remplir",
         images: [
           { src: "Illustrations/monster.jpg" }
         ]
       },
+      "carnet de correspondance":  {
+        title: "carnet de correspondance",
+        description: "Brouillon de Procreate. Un ensemble de dessin sans destination ou de projets perdu et laisser de coter sur procreate",
+        images: [
+          { src: "Illustrations/Carnet1.jpg" },
+          { src: "Illustrations/Carnet2.jpg" },
+          { src: "Illustrations/Carnet3.jpg" },
+          { src: "Illustrations/Carnet7.jpg" }
+          
+        ]
+      },
+      "Trans":  {
+        title: "Trans",
+        description: "Des illustrations ou je me représente dans un quotidien qui est proche du rêve ou de l'imaginaire",
+        images: [
+          { src: "Illustrations/InjectionTesto.png" },
+          { src: "Illustrations/Pollypocket.png" },
+          
+        ]
+      },
+      "MamTamAffiche":  {
+        title: "Mam Tam Affiche",
+        description: "Affiche pour un événement de métal à l'international.",
+        images: [
+          { src: "Illustrations/MamTamAffiche.png" }
+          
+        ]
+      },
+      
+      
   };
-
   
+
   
   document.addEventListener("DOMContentLoaded", () => {
     const galleryImages = document.querySelectorAll(".gallery img");
     const lightbox = document.getElementById("lightbox");
     const lightboxImage = document.getElementById("lightbox-image");
-    const lightboxTitle = document.getElementById("lightbox-title");
-    const lightboxDescription = document.getElementById("lightbox-description");
+    const lightboxTitle = document.getElementById("modal-title");
+    const lightboxDescription = document.getElementById("modal-description");
     const closeLightbox = document.getElementById("close-lightbox");
     const prevImage = document.getElementById("prev-image");
     const nextImage = document.getElementById("next-image");
-    const backdrop = document.getElementById("backdrop"); // Référence à l'élément #backdrop
-    const openButton = document.getElementById("open-button"); // Référence au bouton "open"
-    const modal = document.getElementById("modal"); // Référence à la modale
-    const modalContent = document.querySelector(".modal-content"); // Le contenu de la modale
+    const backdrop = document.getElementById("backdrop");
+    const openButton = document.getElementById("open-button");
+    const modal = document.getElementById("modal");
+    const modalContent = document.querySelector(".modal-content");
   
     let currentProject = null;
     let currentImageIndex = 0;
@@ -98,7 +133,10 @@ document.addEventListener("DOMContentLoaded", () => {
         backdrop.style.display = "block"; // Afficher l'overlay (backdrop)
         backdrop.style.backdropFilter = "blur(10px)"; // Ajouter un flou de fond sur l'overlay
   
-        // Réinitialiser la modale à chaque fois qu'un nouveau projet est ouvert
+        // Réinitialiser la visibilité de l'image si la modale était ouverte
+        lightboxImage.style.visibility = modal.style.display === "block" ? "hidden" : "visible";
+  
+        // Fermer la modale si elle est ouverte
         closeModal();
       }
     }
@@ -120,21 +158,20 @@ document.addEventListener("DOMContentLoaded", () => {
       lightbox.style.display = "none";
       backdrop.style.display = "none"; // Masquer l'overlay lorsque la lightbox est fermée
       closeModal(); // Fermer la modale si elle est ouverte
-    }
+      openButton.textContent = "Bavardages"; // Réinitialiser le texte du bouton
+    
   
-    // Fonction pour fermer la modale
-    function closeModal() {
-      modal.style.display = "none"; // Cacher la modale
-      modalContent.innerHTML = ""; // Vider le contenu de la modale
+      // Toujours rendre l'image visible après fermeture de la lightbox
+      lightboxImage.style.visibility = "visible";
     }
   
     // Fonction pour ouvrir la modale
     function openModal() {
       modal.style.display = "block"; // Afficher la modale
+      lightboxImage.style.visibility = "hidden"; // Masquer l'image derrière
   
       // Réinitialiser le contenu de la modale avant d'ajouter de nouvelles données
       modalContent.innerHTML = "";
-  
       const modalTitle = document.createElement("h3");
       modalTitle.textContent = currentProject.title;
       const modalDescription = document.createElement("p");
@@ -142,6 +179,13 @@ document.addEventListener("DOMContentLoaded", () => {
   
       modalContent.appendChild(modalTitle);
       modalContent.appendChild(modalDescription);
+    }
+  
+    // Fonction pour fermer la modale
+    function closeModal() {
+      modal.style.display = "none"; // Cacher la modale
+      modalContent.innerHTML = ""; // Vider le contenu de la modale
+      lightboxImage.style.visibility = "visible"; // Toujours rendre l'image visible après fermeture
     }
   
     // Navigation entre les images
@@ -173,12 +217,19 @@ document.addEventListener("DOMContentLoaded", () => {
     closeLightbox.addEventListener("click", closeLightboxView);
   
     // Écouteur pour le bouton "Open"
-    openButton.addEventListener("click", () => {
-      if (modal.style.display === "none" || modal.style.display === "") {
-        openModal(); // Ouvrir la modale
-      } else {
-        closeModal(); // Fermer la modale
-      }
-    });
+   // Écouteur pour le bouton "Open"
+openButton.addEventListener("click", () => {
+  if (modal.style.display === "none" || modal.style.display === "") {
+    openModal(); // Ouvrir la modale
+    openButton.textContent = "CHUUTT !"; // Changer le texte du bouton
+  } else {
+    closeModal(); // Fermer la modale
+    openButton.textContent = "Bavardages"; // Réinitialiser le texte du bouton
+  }
+});
+
+
+
   });
+  
   
