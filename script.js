@@ -228,7 +228,6 @@ openButton.addEventListener("click", () => {
     openButton.textContent = "Bavardages"; // Réinitialiser le texte du bouton
   }
 });
-
 // Ajout des événements de swipe
 let touchStartX = 0;
 let touchEndX = 0;
