@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ]
       },
       "Trans":  {
-        title: "Trans",
-        description: "Mon quotidien",
+        title: "Quotidien",
+        description: "",
         images: [
           { src: "Illustrations/Design.jpg" },
           { src: "Illustrations/Test2.png" },

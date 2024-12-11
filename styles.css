@@ -405,54 +405,6 @@ header h1 {
   word-wrap: break-word; 
 }
 
-/* Ajustements pour les écrans plus petits */
-@media (max-width: 768px) {
-  .modal {
-    width: 95%; /* Plus large pour les tablettes */
-    max-width: 400px; /* Limite la largeur sur les écrans intermédiaires */
-  }
-
-  .modal h2 {
-    font-size: 1.2em;
-  }
-
-  .modal p {
-    font-size: 0.9em;
-  }
-}
-
-@media (max-width: 480px) {
-  .modal {
-    padding: 15px; 
-    max-height: 85%; 
-  }
-
-  .modal h2 {
-    font-size: 1em;
-  }
-
-  .modal p {
-    font-size: 0.85em;
-  }
-}
-
-/* Responsiveness pour tablette */
-@media (max-width: 768px) {
-  #open-button {
-    top: 5px; 
-    left: 5px;
-    padding: 8px 12px; 
-    font-size: 14px; 
-  }
-
-  #close-lightbox {
-    top: 5px; /* Ajuster la position sur tablette */
-    right: 5px;
-    padding: 5px 8px; 
-    font-size: 20px; 
-  }
-}
-
 /* Responsiveness pour mobile */
 @media (max-width: 480px) {
   #open-button {
@@ -481,6 +433,43 @@ header h1 {
     width: 100%;
     flex-direction: column-reverse;
   }
+
+  header h1 {
+    font-size: 2rem; 
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px; 
+  }
+
+  nav ul li {
+    font-size: 14px; 
+  }
+
+  .note {
+    top: 15px; 
+    left: 40px;
+    font-size: 1rem; 
+    max-width: 100px; 
+  }
+
+  .note {
+    font-size: 1rem; /* Taille ajustée pour mobile */
+  }
+
+  .modal {
+    padding: 15px; 
+    max-height: 85%; 
+  }
+
+  .modal h2 {
+    font-size: 1em;
+  }
+
+  .modal p {
+    font-size: 0.85em;
+  }
 }
 
 /* Responsiveness pour tablette */
@@ -496,47 +485,14 @@ header h1 {
   nav ul li {
     font-size: 16px; 
   }
-}
 
-/* Responsiveness pour mobile */
-@media (max-width: 480px) {
-  header h1 {
-    font-size: 2rem; 
-  }
-
-  nav ul {
-    flex-direction: column;
-    gap: 15px; 
-  }
-
-  nav ul li {
-    font-size: 14px; 
-  }
-}
-
-/* Responsiveness pour tablette */
-@media (max-width: 768px) {
   .note {
     top: 20px;
     left: 80px; 
     font-size: 1.2rem; 
     max-width: 120px; 
   }
-}
 
-/* Responsiveness pour mobile */
-@media (max-width: 480px) {
-  .note {
-    top: 15px; 
-    left: 40px;
-    font-size: 1rem; 
-    max-width: 100px; 
-  }
-}
-
-
-
-@media (max-width: 768px) {
   .note {
     position: relative; 
     left: 0;
@@ -556,16 +512,35 @@ header h1 {
   .note span {
     font-weight: bold; 
   }
-}
 
-@media (max-width: 480px) {
-  .note {
-    font-size: 1rem; /* Taille ajustée pour mobile */
-  }
-}
-
-@media (max-width: 768px) {
   .arrow {
     display: none !important;
+  }
+
+  #open-button {
+    top: 5px; 
+    left: 5px;
+    padding: 8px 12px; 
+    font-size: 14px; 
+  }
+
+  #close-lightbox {
+    top: 5px; /* Ajuster la position sur tablette */
+    right: 5px;
+    padding: 5px 8px; 
+    font-size: 20px; 
+  }
+
+  .modal {
+    width: 95%; /* Plus large pour les tablettes */
+    max-width: 400px; /* Limite la largeur sur les écrans intermédiaires */
+  }
+
+  .modal h2 {
+    font-size: 1.2em;
+  }
+
+  .modal p {
+    font-size: 0.9em;
   }
 }
