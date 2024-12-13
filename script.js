@@ -113,6 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Ouvrir la lightbox
   galleryImages.forEach((img) => img.addEventListener("click", () => {
+    // Fermer la modal avant d'ouvrir un nouveau projet
+    modal.style.display = "none";
+    modalContent.innerHTML = "";
+    openButton.textContent = "Bavardages";
+
     currentProject = projectDetails[img.dataset.id];
     currentImageIndex = 0;
     updateLightboxContent();
@@ -121,16 +126,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }));
 
   // Changer d'image dans la lightbox
-  prevImage.addEventListener("click", () => { if (currentImageIndex > 0) currentImageIndex--; updateLightboxContent(); });
-  nextImage.addEventListener("click", () => { if (currentImageIndex < currentProject.images.length - 1) currentImageIndex++; updateLightboxContent(); });
+  prevImage.addEventListener("click", () => { 
+    if (currentImageIndex > 0) currentImageIndex--; 
+    updateLightboxContent(); 
+  });
+  nextImage.addEventListener("click", () => { 
+    if (currentImageIndex < currentProject.images.length - 1) currentImageIndex++; 
+    updateLightboxContent(); 
+  });
+
+  // Fermer la lightbox et la modal
   closeLightbox.addEventListener("click", () => {
     lightbox.style.display = "none";
     backdrop.style.display = "none";
-    closeModal();
+    modal.style.display = "none";  // Ajouté pour fermer la modal
+    modalContent.innerHTML = "";  // Réinitialisation du contenu de la modal
     lightboxImage.style.visibility = "visible";
+    openButton.textContent = "Bavardages";  // Réinitialisation du texte du bouton
   });
 
-  // Fonction pour ouvrir/fermer le modal
+  // Fonction pour ouvrir/fermer la modal
   openButton.addEventListener("click", () => {
     if (modal.style.display === "none" || modal.style.display === "") {
       modal.style.display = "block";
