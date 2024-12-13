@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
     },
     "Trans": {
-      title: "Quotidien",
+      title: "ok",
       description: "",
       images: [
         { src: "Illustrations/Design.jpg" },
