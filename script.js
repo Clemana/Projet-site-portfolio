@@ -101,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentProject = null;
   let currentImageIndex = 0;
 
+  // Fonction pour mettre à jour le contenu de la lightbox
   function updateLightboxContent() {
     const imageDetails = currentProject.images[currentImageIndex];
     lightboxImage.src = imageDetails.src;
@@ -110,82 +111,46 @@ document.addEventListener("DOMContentLoaded", () => {
     nextImage.style.display = currentImageIndex < currentProject.images.length - 1 ? "block" : "none";
   }
 
-  function closeLightboxView() {
+  // Ouvrir la lightbox
+  galleryImages.forEach((img) => img.addEventListener("click", () => {
+    currentProject = projectDetails[img.dataset.id];
+    currentImageIndex = 0;
+    updateLightboxContent();
+    lightbox.style.display = "flex";
+    backdrop.style.display = "block";
+  }));
+
+  // Changer d'image dans la lightbox
+  prevImage.addEventListener("click", () => { if (currentImageIndex > 0) currentImageIndex--; updateLightboxContent(); });
+  nextImage.addEventListener("click", () => { if (currentImageIndex < currentProject.images.length - 1) currentImageIndex++; updateLightboxContent(); });
+  closeLightbox.addEventListener("click", () => {
     lightbox.style.display = "none";
     backdrop.style.display = "none";
     closeModal();
     lightboxImage.style.visibility = "visible";
-  }
-
-  function openModal() {
-    modal.style.display = "block";
-    lightboxImage.style.visibility = "hidden";
-    modalContent.innerHTML = `<h3>${currentProject.title}</h3><p>${currentProject.description}</p>`;
-  }
-
-  function closeModal() {
-    modal.style.display = "none";
-    modalContent.innerHTML = "";
-    lightboxImage.style.visibility = "visible";
-  }
-
-  function showPrevImage() {
-    if (currentImageIndex > 0) {
-      currentImageIndex--;
-      updateLightboxContent();
-    }
-  }
-
-  function showNextImage() {
-    if (currentImageIndex < currentProject.images.length - 1) {
-      currentImageIndex++;
-      updateLightboxContent();
-    }
-  }
-
-  galleryImages.forEach((img) => {
-    img.addEventListener("click", () => {
-      const projectId = img.getAttribute("data-id");
-      currentProject = projectDetails[projectId];
-      currentImageIndex = 0;
-      updateLightboxContent();
-      lightbox.style.display = "flex";
-      backdrop.style.display = "block";
-      backdrop.style.backdropFilter = "blur(10px)";
-    });
   });
 
-  prevImage.addEventListener("click", showPrevImage);
-  nextImage.addEventListener("click", showNextImage);
-  closeLightbox.addEventListener("click", closeLightboxView);
-
+  // Fonction pour ouvrir/fermer le modal
   openButton.addEventListener("click", () => {
     if (modal.style.display === "none" || modal.style.display === "") {
-      openModal();
+      modal.style.display = "block";
+      lightboxImage.style.visibility = "hidden";
+      modalContent.innerHTML = `<h3>${currentProject.title}</h3><p>${currentProject.description}</p>`;
       openButton.textContent = "CHUUTT !";
     } else {
-      closeModal();
+      modal.style.display = "none";
+      modalContent.innerHTML = "";
+      lightboxImage.style.visibility = "visible";
       openButton.textContent = "Bavardages";
     }
   });
 
+  // Gestion du swipe sur mobile
   let touchStartX = 0;
   let touchEndX = 0;
-  const swipeThreshold = 50;
-
-  lightboxImage.addEventListener("touchstart", (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  });
-
+  lightboxImage.addEventListener("touchstart", (e) => touchStartX = e.changedTouches[0].screenX);
   lightboxImage.addEventListener("touchend", (e) => {
     touchEndX = e.changedTouches[0].screenX;
-    if (Math.abs(touchEndX - touchStartX) > swipeThreshold) {
-      touchEndX < touchStartX ? showNextImage() : showPrevImage();
-    }
+    if (Math.abs(touchEndX - touchStartX) > 50) (touchEndX < touchStartX ? nextImage : prevImage).click();
   });
-
-  lightboxImage.addEventListener("touchmove", (e) => e.preventDefault(), { passive: false });
 });
-
-  
-  
